@@ -4,7 +4,7 @@ import arrowLeft from '../img/arrow-left.png';
 import axios from 'axios'
 import '../App.css'
 import Preview from './preview'
-class Videos extends React.Component {
+class DetailContainer extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -90,4 +90,4 @@ class Videos extends React.Component {
     }
 }
 
-export default Videos
+export default DetailContainer

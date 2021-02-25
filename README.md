@@ -1,11 +1,13 @@
-# Getting Started with Create React App
+# Getting Started with Corousal-with-Preview React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
 In the project directory, you can run:
-
+### `git clone https://github.com/neerajsoni15494/Carousal-with-preview.git`
+### `npm install`
+### `npm install axios`
 ### `npm start`
 
 Runs the app in the development mode.\
