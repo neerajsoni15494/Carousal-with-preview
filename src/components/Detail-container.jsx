@@ -12,7 +12,8 @@ class DetailContainer extends React.Component {
             images: [],
             arrowNext: arrowRight,
             arrowPrev: arrowLeft,
-            isOpen: false
+            isOpen: false,
+            selectedImage: ''
         };
         this.nextSlide = this.nextSlide.bind(this);
         this.prevSlide = this.prevSlide.bind(this);
@@ -29,9 +30,11 @@ class DetailContainer extends React.Component {
         this.setState({ isOpen: !this.state.isOpen });
         console.log("cliked");
     };
-    showPreviewDialog() {
+    showPreviewDialog(id) {
+        console.log(id)
         this.setState({
             isOpen: true,
+            selectedImage: id
         });
     };
 
@@ -40,7 +43,8 @@ class DetailContainer extends React.Component {
             return {
                 login: item.login,
                 avatar_url: item.avatar_url,
-                type: item.type
+                type: item.type,
+                id: item.id
             }
         })
         this.setState({
@@ -72,17 +76,18 @@ class DetailContainer extends React.Component {
         return (
             <div className="detail-panel">
                 <img className="move-button" src={this.state.arrowPrev} onClick={this.prevSlide} />
-                {firstFiveVideo.map((image, index) =>
-                    <div className="main-content">
-                        <img onClick={(key) => { this.showPreviewDialog(key) }} key={index} src={image.avatar_url} alt="" />
+                {firstFiveVideo.map((image, index) => {
+                    return (<div className="main-content">
+                        <img onClick={() => { this.showPreviewDialog(image.id) }} key={index} src={image.avatar_url} alt="" />
                         {this.state.isOpen ?
-                            <Preview data={image} /> :
+                            <Preview data={image} selectedImage={this.state.selectedImage} /> :
                             null
                         }
                         <li>Login: {image.login}</li>
                         <li>Login: {image.type}</li>
                     </div >
-                )
+                    )
+                })
                 }
                 <img className="move-button" src={this.state.arrowNext} onClick={this.nextSlide} />
             </div >
